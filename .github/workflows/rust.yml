@@ -24,24 +24,13 @@ jobs:
           components: rustfmt, clippy
      
       - name: Cargo Check
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
+        run: cargo check
       
       - name: Check Formatting
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
+        run: cargo fmr --all -- --check
       
       - name: Clippy
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: -- -D warnings
+        run: cargo clippy -- -D warnings
       
       - name: Documentation
-        uses: actions-rs/cargo@v1
-        with:
-          command: doc
-          args: --no-deps 
+        run: cargo doc --no-deps
