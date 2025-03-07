@@ -1,0 +1,23 @@
+[package]
+name = "bestbefore"
+version = "0.1.0"
+edition = "2021"
+description = "A procedural macro for marking code with expiration dates"
+authors = ["Alexey Aristov <aav@acm.org>"]
+license = "EPL-2.0"
+repository = "https://github.com/suprematic/bestbefore"
+documentation = "https://docs.rs/bestbefore"
+keywords = ["macro", "procedural-macro", "deprecation", "expiration", "technical-debt"]
+categories = ["development-tools", "rust-patterns"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "2.0", features = ["full", "extra-traits", "parsing"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+chrono = "0.4"
+
+[dev-dependencies]
+trybuild = "1.0" 
