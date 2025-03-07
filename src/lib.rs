@@ -132,7 +132,7 @@ pub fn bestbefore(attr: TokenStream, item: TokenStream) -> TokenStream {
         let message = syn::LitStr::new(&message, Span::call_site());
         quote! {
             compile_error!(#message);
-            
+
         }
         .into()
     }
@@ -210,27 +210,27 @@ impl Parse for BestBeforeArgs {
         let mut warning_date = None;
         let mut expires_date = None;
         let mut message = None;
-        
+
         if input.is_empty() {
             return Err(syn::Error::new(
                 input.span(),
                 "Missing parameters. Expected either warning date or expires parameter",
             ));
         }
-        
+
         if input.peek(LitStr) {
             let date_lit: LitStr = input.parse()?;
             warning_date = Some(parse_date(&date_lit.value()));
-            
+
             if !input.is_empty() {
                 input.parse::<Token![,]>()?;
             }
         }
-        
+
         while !input.is_empty() {
             let name: syn::Ident = input.parse()?;
             input.parse::<Token![=]>()?;
-            
+
             if name == "expires" {
                 let date_lit = input.parse::<LitStr>()?;
                 expires_date = Some(parse_date(&date_lit.value()));
@@ -243,23 +243,23 @@ impl Parse for BestBeforeArgs {
                     "Unknown parameter, expected 'expires' or 'message'",
                 ));
             }
-            
+
             if !input.is_empty() {
                 input.parse::<Token![,]>()?;
             }
         }
-        
+
         // If warning_date is not provided but expires_date is, use expires_date as the warning_date
         // This simplifies using #[bestbefore(expires="01.2028")] format
         if warning_date.is_none() {
             if let Some(exp_date) = expires_date {
                 warning_date = Some(exp_date);
             } else {
-                return Err(syn::Error::new(input.span(), 
+                return Err(syn::Error::new(input.span(),
                     "Missing parameters. You must provide either a warning date or an expires parameter"));
             }
         }
-        
+
         Ok(BestBeforeArgs {
             warning_date: warning_date.unwrap(),
             expires_date,
@@ -285,7 +285,7 @@ fn parse_date(date_str: &str) -> NaiveDate {
         panic!("Invalid year: '{}'. Expected a valid year number", parts[1]);
     });
 
-    if month < 1 || month > 12 {
+    if !(1..=12).contains(&month) {
         panic!("Invalid month: {}. Expected a number from 1-12", month);
     }
 
