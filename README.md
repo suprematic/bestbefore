@@ -1,5 +1,11 @@
 # BestBefore
 
+[![Crates.io](https://img.shields.io/crates/v/bestbefore.svg)](https://crates.io/crates/bestbefore)
+[![Documentation](https://docs.rs/bestbefore/badge.svg)](https://docs.rs/bestbefore)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/suprematic/bestbefore/rust.yml?branch=main)](https://github.com/suprematic/bestbefore/actions)
+[![Minimum Rust Version](https://img.shields.io/badge/MSRV-1.60.0-brightgreen.svg)](https://github.com/suprematic/bestbefore)
+[![dependency status](https://deps.rs/repo/github/suprematic/bestbefore/status.svg)](https://deps.rs/repo/github/suprematic/bestbefore)
+
 A Rust procedural macro for managing code with expiration dates.
 
 ## Introduction
