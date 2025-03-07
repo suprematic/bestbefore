@@ -27,7 +27,7 @@ jobs:
         run: cargo check
       
       - name: Check Formatting
-        run: cargo fmr --all -- --check
+        run: cargo fmt --all -- --check
       
       - name: Clippy
         run: cargo clippy -- -D warnings
