@@ -7,21 +7,21 @@ authors = ["Alexey Aristov <aav@acm.org>"]
 license = "EPL-2.0"
 repository = "https://github.com/suprematic/bestbefore"
 documentation = "https://docs.rs/bestbefore"
-keywords = ["macro", "procedural-macro", "deprecation", "expiration", "technical-debt"]
-categories = ["development-tools", "rust-patterns"]
-include = [
-    "Cargo.toml",
-    "LICENSE.EPL",
-    "README.md",
-    "src/**",
-    "examples/**",
+keywords = [
+    "macro",
+    "procedural-macro",
+    "deprecation",
+    "expiration",
+    "technical-debt",
 ]
+categories = ["development-tools", "rust-patterns"]
+include = ["Cargo.toml", "LICENSE.EPL", "README.md", "src/**", "examples/**"]
 
 [lib]
 proc-macro = true
 
 [dependencies]
-syn = { version = "2.0", features = ["full", "extra-traits", "parsing"] }
-quote = "1.0"
-proc-macro2 = "1.0"
-chrono = "0.4"
+syn = { version = "2.0.99", features = ["full", "extra-traits", "parsing"] }
+quote = "1.0.39"
+proc-macro2 = "1.0.94"
+chrono = "0.4.40"
